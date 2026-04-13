@@ -330,28 +330,7 @@
       pointer-events: none;
     }
     /* Decorative dots */
-    .hero-dots {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .hero-dots::before {
-      content: '';
-      position: absolute;
-      top: 15%; right: 8%;
-      width: 180px; height: 180px;
-      border: 1px solid rgba(20,200,224,0.15);
-      border-radius: 50%;
-    }
-    .hero-dots::after {
-      content: '';
-      position: absolute;
-      top: 25%; right: 12%;
-      width: 80px; height: 80px;
-      border: 1px solid rgba(20,200,224,0.2);
-      border-radius: 50%;
-    }
+    .hero-dots { display: none; }
     .hero-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -420,40 +399,57 @@
     /* Hero visual – floating cards */
     .hero-visual {
       position: relative;
-      height: 420px;
+      height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .hv-cards {
       position: relative;
-      width: 300px;
-      height: 360px;
+      width: 380px;
+      height: 440px;
     }
     .hv-card {
       position: absolute;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 18px;
-      padding: 1.5rem 1.75rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 22px;
+      padding: 1.9rem 2.1rem;
+      overflow: hidden;
+    }
+    /* Lesk — diagonální přechod přes kartu */
+    .hv-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -60%;
+      width: 55%; height: 100%;
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(255,255,255,0.08) 40%,
+        rgba(255,255,255,0.18) 50%,
+        rgba(255,255,255,0.08) 60%,
+        transparent 100%
+      );
+      pointer-events: none;
     }
     .hv-card--1 {
       top: 0; left: 0;
-      width: 200px;
+      width: 240px;
       transform: rotate(-3deg);
       animation: cardFloat1 5s ease-in-out infinite;
     }
     .hv-card--2 {
-      top: 80px; right: 0;
-      width: 220px;
+      top: 100px; right: 0;
+      width: 265px;
       animation: cardFloat2 6s ease-in-out infinite;
       z-index: 2;
     }
     .hv-card--3 {
       bottom: 0; left: 20px;
-      width: 210px;
+      width: 255px;
       transform: rotate(2deg);
       animation: cardFloat3 5.5s ease-in-out infinite;
     }
@@ -480,7 +476,7 @@
     }
     .hvc-num {
       font-family: var(--ff-head);
-      font-size: 2.4rem;
+      font-size: 2.9rem;
       font-weight: 800;
       color: var(--aqua);
       line-height: 1;
