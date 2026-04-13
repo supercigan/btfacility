@@ -570,6 +570,55 @@
       color: var(--text-mid);
       line-height: 1.65;
     }
+    /* Accordion */
+    .acc-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      font-family: var(--ff-head);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--aqua-dark);
+      padding: 0.85rem 0 0;
+      margin-top: 1rem;
+      text-align: left;
+      min-height: 44px;
+      transition: color var(--transition);
+    }
+    .acc-btn:hover { color: var(--jade); }
+    .acc-arrow {
+      display: inline-block;
+      transition: transform 0.35s ease;
+      font-size: 0.9rem;
+    }
+    .service-card.open .acc-arrow { transform: rotate(180deg); }
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .service-card.open .acc-body { max-height: 700px; }
+    .acc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      padding-top: 1rem;
+    }
+    .acc-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+    .acc-check { color: var(--jade); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
     /* ============================================================
        WHY US
@@ -1373,51 +1422,160 @@
       </p>
     </div>
     <div class="services-grid">
+
       <div class="service-card fade-up">
         <span class="service-icon">🏢</span>
         <div class="service-name">Úklid firem a kanceláří</div>
-        <div class="service-desc">Pravidelný i jednorázový úklid kanceláří, administrativních, obchodních, výrobních a skladových prostor. Přizpůsobíme se vašim potřebám a provozu.</div>
+        <div class="service-desc">Pravidelný i jednorázový úklid kanceláří, administrativních, obchodních, výrobních a skladových prostor. Přizpůsobíme se vašemu provozu.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Kanceláře, zasedací místnosti, recepce, toalety a kuchyňky</li>
+            <li><span class="acc-check">✓</span> Obchodní, výrobní a skladové prostory všech velikostí</li>
+            <li><span class="acc-check">✓</span> Úklid probíhá mimo vaši pracovní dobu — bez narušení provozu</li>
+            <li><span class="acc-check">✓</span> Frekvence dle dohody: denně, týdně, 14 dní nebo dle potřeby</li>
+            <li><span class="acc-check">✓</span> Profesionální čisticí prostředky šetrné k lidem i vybavení</li>
+            <li><span class="acc-check">✓</span> Stálý přidělený pracovník — znáte ho, důvěřujete mu</li>
+          </ul>
+        </div>
       </div>
+
       <div class="service-card fade-up">
         <span class="service-icon">🏠</span>
         <div class="service-name">Úklid domácností</div>
         <div class="service-desc">Postaráme se o váš byt nebo dům tak, abyste se mohli věnovat tomu, co vás baví. Pravidelný i jednorázový úklid, generální úklid.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Vysávání, vytírání, koupelny, toalety, kuchyně</li>
+            <li><span class="acc-check">✓</span> Otření prachu na všech površích, čištění spotřebičů</li>
+            <li><span class="acc-check">✓</span> Mytí oken zevnitř, čištění žaluzií a rolet</li>
+            <li><span class="acc-check">✓</span> Pravidelný úklid (týdně / 14 dní), jednorázový nebo generální</li>
+            <li><span class="acc-check">✓</span> Úklid před nastěhováním nebo po vystěhování</li>
+            <li><span class="acc-check">✓</span> Pracovník přichází ve stanoveném čase, pracuje samostatně a diskrétně</li>
+          </ul>
+        </div>
       </div>
+
       <div class="service-card fade-up">
         <span class="service-icon">🪟</span>
         <div class="service-name">Mytí oken, výloh a žaluzií</div>
         <div class="service-desc">Profesionální mytí oken zevnitř i zvenku, výloh obchodů a kancelářských prostor. Čisté žaluzie a rolety jako nové.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Mytí oken zevnitř i zvenku, včetně rámů a parapetů</li>
+            <li><span class="acc-check">✓</span> Výlohy obchodů a prodejen — bez šmouh, křišťálová čistota</li>
+            <li><span class="acc-check">✓</span> Čištění žaluzií, rolet a sítí proti hmyzu</li>
+            <li><span class="acc-check">✓</span> Balkonové dveře, střešní okna, skleněné příčky</li>
+            <li><span class="acc-check">✓</span> Výška i obtížně přístupná místa zvládáme s vhodným vybavením</li>
+            <li><span class="acc-check">✓</span> Ideální jaro / podzim nebo před firemními akcemi</li>
+          </ul>
+        </div>
       </div>
+
       <div class="service-card fade-up">
         <span class="service-icon">🛋️</span>
         <div class="service-name">Čištění koberců a čalounění</div>
-        <div class="service-desc">Hloubkové čištění koberců, sedaček, čalouněného nábytku i rohoží strojovým způsobem. Odstraníme nečistoty, roztoče i alergeny.</div>
+        <div class="service-desc">Hloubkové strojové čištění koberců, sedaček, čalouněného nábytku i rohoží. Odstraníme nečistoty, roztoče i alergeny.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Hloubkové strojové čištění přístrojem Kärcher</li>
+            <li><span class="acc-check">✓</span> Koberce, sedačky, křesla, čalouněné postele, rohože</li>
+            <li><span class="acc-check">✓</span> Odstraníme skvrny, prach, roztoče, alergeny i pachy</li>
+            <li><span class="acc-check">✓</span> Čas schnutí přibližně 2–4 hodiny</li>
+            <li><span class="acc-check">✓</span> Provádíme u vás doma i ve firmě, bez demontáže nábytku</li>
+            <li><span class="acc-check">✓</span> Výsledek: jako nové — i staré skvrny mizí</li>
+          </ul>
+        </div>
       </div>
+
       <div class="service-card fade-up">
         <span class="service-icon">🧽</span>
         <div class="service-name">Strojové čištění podlah</div>
         <div class="service-desc">Strojové mytí a leštění tvrdých podlah — dlažby, PVC, vinylu i parketu. Ideální pro provozovny, sklady a průmyslové prostory.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Dlažba, PVC, vinyl, laminát, průmyslové litinové podlahy</li>
+            <li><span class="acc-check">✓</span> Strojové mytí + leštění + volitelná impregnace</li>
+            <li><span class="acc-check">✓</span> Odstraníme mastné skvrny, zbytky oleje, stavební nečistoty</li>
+            <li><span class="acc-check">✓</span> Ideální pro sklady, výrobní haly, restaurace, obchody, chodby</li>
+            <li><span class="acc-check">✓</span> Výsledek vydrží podstatně déle než běžné ruční mytí</li>
+            <li><span class="acc-check">✓</span> Pracujeme i přes noc nebo o víkendu bez přerušení provozu</li>
+          </ul>
+        </div>
       </div>
+
       <div class="service-card fade-up">
         <span class="service-icon">🏗️</span>
         <div class="service-name">Úklid po rekonstrukci</div>
         <div class="service-desc">Porekonstrukční úklid po malování, řemeslnících a stavebních pracích. Odstraníme prach, zbytky materiálů a uvedeme prostory do provozuschopného stavu.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Odstranění stavebního prachu ze všech povrchů a rohů</li>
+            <li><span class="acc-check">✓</span> Čištění podlah, obkladů, sanity a kuchyňských linek</li>
+            <li><span class="acc-check">✓</span> Umytí oken a rámů od zbytků nátěrů a lepidel</li>
+            <li><span class="acc-check">✓</span> Odvoz stavebního odpadu (po domluvě)</li>
+            <li><span class="acc-check">✓</span> Po malování, sádrokartonových pracích i větších rekonstrukcích</li>
+            <li><span class="acc-check">✓</span> Prostor předáme připravený k nastěhování nebo předání nájemci</li>
+          </ul>
+        </div>
       </div>
+
       <div class="service-card fade-up">
         <span class="service-icon">🏘️</span>
         <div class="service-name">Úklid bytových domů a SVJ</div>
         <div class="service-desc">Pravidelný úklid společných prostor bytových domů, panelových domů, čínžovních domů a SVJ. Schody, chodby, výtahy, sklepní prostory.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Schody, podesty, chodby, vstupní haly a výtahy</li>
+            <li><span class="acc-check">✓</span> Sklepní chodby, kolárny, kočárkárny, technické místnosti</li>
+            <li><span class="acc-check">✓</span> Pravidelný harmonogram: týdně / 14 dní / měsíčně dle dohody</li>
+            <li><span class="acc-check">✓</span> Fakturu vystavíme přímo na SVJ nebo správce domu</li>
+            <li><span class="acc-check">✓</span> Mimořádný úklid (po havárii, vandalismu) zajistíme operativně</li>
+            <li><span class="acc-check">✓</span> Panelové domy, čínžovní domy, novostavby i historické objekty</li>
+          </ul>
+        </div>
       </div>
+
       <div class="service-card fade-up">
         <span class="service-icon">🔧</span>
         <div class="service-name">Půjčovna strojů Kärcher</div>
-        <div class="service-desc">Zapůjčíme profesionální stroj Kärcher na čištění koberců, sedáček a čalounění. Denní i víkendová výpůjčka, výhodné ceny.</div>
+        <div class="service-desc">Zapůjčíme profesionální stroj Kärcher na čištění koberců, sedáček a čalounění. Denní i víkendová výpůjčka za výhodné ceny.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Profesionální přístroj Kärcher — stejný, co používáme my</li>
+            <li><span class="acc-check">✓</span> Výpůjčka na 1 den od 800 Kč, víkend od 1 500 Kč</li>
+            <li><span class="acc-check">✓</span> Součástí výpůjčky: čisticí prostředky a instruktáž obsluhy</li>
+            <li><span class="acc-check">✓</span> Možnost dovozu a odvozu stroje za příplatek</li>
+            <li><span class="acc-check">✓</span> Vhodný pro: koberce, sedačky, čalounění, autopotahy</li>
+            <li><span class="acc-check">✓</span> Rezervace telefonicky, dostupnost ověřte předem</li>
+          </ul>
+        </div>
       </div>
+
       <div class="service-card fade-up">
         <span class="service-icon">♿</span>
         <div class="service-name">Náhradní plnění</div>
         <div class="service-desc">Pomůžeme vám splnit zákonnou povinnost zaměstnávání OZP (§ 81 zák. č. 435/2004 Sb.). Odběrem našich služeb přispíváte k zaměstnanosti zdravotně postižených.</div>
+        <button class="acc-btn" aria-expanded="false">Více informací <span class="acc-arrow">↓</span></button>
+        <div class="acc-body">
+          <ul class="acc-list">
+            <li><span class="acc-check">✓</span> Povinnost platí pro firmy s 25 a více zaměstnanci</li>
+            <li><span class="acc-check">✓</span> Ušetříte 2,5násobek průměrné mzdy za každé nevyplněné OZP místo</li>
+            <li><span class="acc-check">✓</span> Odebráním našich služeb splníte zákonnou povinnost smysluplně</li>
+            <li><span class="acc-check">✓</span> Vystavíme veškeré doklady potřebné pro daňové a evidenční účely</li>
+            <li><span class="acc-check">✓</span> Individuální nabídka přizpůsobená velikosti vaší firmy</li>
+            <li><span class="acc-check">✓</span> BT Facility je registrovaný dodavatel náhradního plnění OZP</li>
+          </ul>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1826,6 +1984,16 @@
     btn.textContent = '✅ Odesláno! Brzy se ozveme.';
     btn.style.background = 'var(--jade)';
     btn.disabled = true;
+  });
+
+  // Accordion – service cards
+  document.querySelectorAll('.acc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.service-card');
+      const isOpen = card.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+      btn.querySelector('.acc-arrow').textContent = isOpen ? '↑' : '↓';
+    });
   });
 
   // Smooth scroll for anchor links
