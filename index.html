@@ -736,6 +736,116 @@
     }
 
     /* ============================================================
+       GALLERY
+    ============================================================ */
+    .gallery {
+      padding: 6rem 0;
+      background: var(--snow);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      background: var(--border);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .gallery-item:hover img { transform: scale(1.07); }
+    .gallery-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8,47,74,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+    .gallery-item-overlay svg {
+      width: 32px; height: 32px;
+      stroke: #fff;
+    }
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,20,35,0.96);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      display: block;
+    }
+    .lb-close {
+      position: absolute;
+      top: 1.25rem; right: 1.5rem;
+      font-size: 2rem;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      min-height: 44px; min-width: 44px;
+      display: flex; align-items: center; justify-content: center;
+      transition: color var(--transition);
+    }
+    .lb-close:hover { color: var(--aqua); }
+    .lb-prev, .lb-next {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      font-size: 2rem;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      width: 52px; height: 52px;
+      min-height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+    .lb-prev { left: 1rem; }
+    .lb-next { right: 1rem; }
+    .lb-prev:hover, .lb-next:hover { background: var(--aqua); color: var(--hero-bg); border-color: var(--aqua); }
+    .lb-counter {
+      position: absolute;
+      bottom: 1.25rem; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--ff-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+    }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .lb-prev { left: 0.5rem; }
+      .lb-next { right: 0.5rem; }
+    }
+
+    /* ============================================================
        REVIEWS
     ============================================================ */
     .reviews {
@@ -1254,6 +1364,7 @@
       <ul class="nav-links">
         <li><a href="#sluzby">Služby</a></li>
         <li><a href="#proc-my">Proč my</a></li>
+        <li><a href="#galerie">Galerie</a></li>
         <li><a href="#reference">Reference</a></li>
         <li><a href="#tym">Tým</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
@@ -1666,6 +1777,91 @@
 </section>
 
 <!-- ============================================================
+     GALLERY
+============================================================ -->
+<section class="gallery" id="galerie">
+  <div class="container">
+    <div class="section-head" style="text-align:center;">
+      <span class="section-label fade-up">Galerie</span>
+      <h2 class="section-title fade-up" style="margin:0 auto 1rem;">Naše práce v praxi</h2>
+      <p class="section-sub fade-up" style="margin:0 auto;">Podívejte se jak pracujeme — v terénu, u klientů, s profesionálním vybavením.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="gallery-item fade-up" data-src="photos/foto-41.png">
+        <img src="photos/foto-41.png" alt="Tým BT Facility s autem a vybavením" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-39.png">
+        <img src="photos/foto-39.png" alt="Tým BT Facility s profesionálním vybavením" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-02.jpg">
+        <img src="photos/foto-02.jpg" alt="Mytí výlohy na žebříku zvenku" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-30.jpg">
+        <img src="photos/foto-30.jpg" alt="Mytí výlohy a oken" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-36.png">
+        <img src="photos/foto-36.png" alt="Úklid společných prostor bytového domu" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-37.png">
+        <img src="photos/foto-37.png" alt="Strojové mytí podlahy v chodbě" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-31.jpg">
+        <img src="photos/foto-31.jpg" alt="Pravidelný úklid panelového domu" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-33.jpg">
+        <img src="photos/foto-33.jpg" alt="Úklid před provozovnou" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-34.png">
+        <img src="photos/foto-34.png" alt="Úklid průmyslového prostoru na žebříku" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-42.png">
+        <img src="photos/foto-42.png" alt="Čištění regálů ve skladu" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-19.jpg">
+        <img src="photos/foto-19.jpg" alt="Strojové čištění koberce v kanceláři" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+      <div class="gallery-item fade-up" data-src="photos/foto-23.jpg">
+        <img src="photos/foto-23.jpg" alt="Před a po čištění koberce" loading="lazy">
+        <div class="gallery-item-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-prev" id="lbPrev">‹</button>
+  <img class="lightbox-img" id="lbImg" src="" alt="">
+  <button class="lb-next" id="lbNext">›</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<!-- ============================================================
      REVIEWS
 ============================================================ -->
 <section class="reviews" id="reference">
@@ -1994,6 +2190,45 @@
       btn.setAttribute('aria-expanded', isOpen);
       btn.querySelector('.acc-arrow').textContent = isOpen ? '↑' : '↓';
     });
+  });
+
+  // Lightbox
+  const items = Array.from(document.querySelectorAll('.gallery-item'));
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lbImg');
+  const lbCnt  = document.getElementById('lbCounter');
+  let current  = 0;
+
+  function openLb(idx) {
+    current = idx;
+    lbImg.src = items[idx].dataset.src;
+    lbImg.alt = items[idx].querySelector('img').alt;
+    lbCnt.textContent = `${idx + 1} / ${items.length}`;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+  function moveLb(dir) {
+    current = (current + dir + items.length) % items.length;
+    lbImg.src = items[current].dataset.src;
+    lbImg.alt = items[current].querySelector('img').alt;
+    lbCnt.textContent = `${current + 1} / ${items.length}`;
+  }
+
+  items.forEach((el, i) => el.addEventListener('click', () => openLb(i)));
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', () => moveLb(-1));
+  document.getElementById('lbNext').addEventListener('click', () => moveLb(1));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') moveLb(-1);
+    if (e.key === 'ArrowRight') moveLb(1);
   });
 
   // Smooth scroll for anchor links
