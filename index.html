@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BT Facility – Profesionální úklid pro firmy a domácnosti | Uherské Hradiště</title>
+  <meta name="description" content="BT Facility – profesionální úklidové služby od roku 2008. Úklid firem, domácností, mytí oken, čištění koberců. Uherské Hradiště a okolí. Zavolejte 601 01 01 27.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --hero-bg: #082F4A;
+      --hero-mid: #0C3D5E;
+      --aqua: #14C8E0;
+      --aqua-dark: #0FB0C6;
+      --jade: #22C47D;
+      --jade-dark: #1AAD6C;
+      --snow: #F2F8FC;
+      --white: #FFFFFF;
+      --card-bg: #FFFFFF;
+      --text-dark: #0A1E2D;
+      --text-mid: #3D5568;
+      --text-light: #6B8294;
+      --border: #DDE8EF;
+      --shadow-sm: 0 2px 12px rgba(8,47,74,0.08);
+      --shadow-md: 0 6px 28px rgba(8,47,74,0.12);
+      --shadow-lg: 0 16px 48px rgba(8,47,74,0.16);
+      --radius: 14px;
+      --radius-sm: 8px;
+      --ff-head: 'Plus Jakarta Sans', sans-serif;
+      --ff-body: 'DM Sans', sans-serif;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s var(--transition), transform 0.65s var(--transition);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .fade-up:nth-child(5) { transition-delay: 0.4s; }
+    .fade-up:nth-child(6) { transition-delay: 0.5s; }
+
+    /* ============================================================
+       SECTION LABELS
+    ============================================================ */
+    .section-label {
+      display: inline-block;
+      font-family: var(--ff-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--aqua-dark);
+      background: rgba(20,200,224,0.1);
+      border: 1px solid rgba(20,200,224,0.25);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .section-head {
+      margin-bottom: 3rem;
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--ff-head);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      min-height: 44px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-aqua {
+      background: var(--aqua);
+      color: var(--hero-bg);
+    }
+    .btn-aqua:hover {
+      background: var(--aqua-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(20,200,224,0.35);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-ghost:hover {
+      border-color: var(--aqua);
+      color: var(--aqua);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--aqua-dark);
+      border: 2px solid var(--aqua);
+    }
+    .btn-outline:hover {
+      background: var(--aqua);
+      color: var(--hero-bg);
+      transform: translateY(-2px);
+    }
+    .btn-jade {
+      background: var(--jade);
+      color: var(--white);
+    }
+    .btn-jade:hover {
+      background: var(--jade-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(34,196,125,0.35);
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.1rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+    .nav.scrolled {
+      background: var(--hero-bg);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+      padding: 0.7rem 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--aqua);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: var(--ff-head);
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .nav-logo-text span {
+      color: var(--aqua);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--ff-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--aqua); }
+    .nav-phone {
+      font-family: var(--ff-head);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--aqua);
+      background: rgba(20,200,224,0.12);
+      border: 1.5px solid rgba(20,200,224,0.3);
+      padding: 0.5rem 1.1rem;
+      border-radius: 50px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .nav-phone:hover {
+      background: var(--aqua);
+      color: var(--hero-bg);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      min-height: 44px;
+      min-width: 44px;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--hero-bg);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--ff-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      transition: color var(--transition);
+    }
+    .mobile-nav a:hover { color: var(--aqua); }
+    .mobile-nav .nav-phone {
+      font-size: 1.1rem;
+      padding: 0.8rem 1.8rem;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--hero-bg) 0%, #0C4268 60%, #0A5070 100%);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(20,200,224,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(34,196,125,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Decorative dots */
+    .hero-dots {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-dots::before {
+      content: '';
+      position: absolute;
+      top: 15%; right: 8%;
+      width: 180px; height: 180px;
+      border: 1px solid rgba(20,200,224,0.15);
+      border-radius: 50%;
+    }
+    .hero-dots::after {
+      content: '';
+      position: absolute;
+      top: 25%; right: 12%;
+      width: 80px; height: 80px;
+      border: 1px solid rgba(20,200,224,0.2);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(34,196,125,0.15);
+      border: 1px solid rgba(34,196,125,0.3);
+      color: var(--jade);
+      font-family: var(--ff-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-h1 {
+      font-family: var(--ff-head);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero-h1 .highlight {
+      color: var(--aqua);
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      max-width: 480px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--ff-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+    }
+    .trust-item .icon { font-size: 1rem; }
+
+    /* Hero right card */
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .hero-card-title {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--aqua);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+    .service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+      font-family: var(--ff-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .hero-card-cta {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.2rem;
+    }
+    .hero-card-phone {
+      font-family: var(--ff-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-card-phone small {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    /* ============================================================
+       STATS BAR
+    ============================================================ */
+    .stats-bar {
+      background: var(--aqua);
+      padding: 2rem 0;
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+    .stat-item {
+      padding: 0.5rem;
+    }
+    .stat-number {
+      font-family: var(--ff-head);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--hero-bg);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--ff-head);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(8,47,74,0.7);
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      transition: var(--transition);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--aqua), var(--jade));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .service-card:hover {
+      border-color: rgba(20,200,224,0.3);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .service-name {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       WHY US
+    ============================================================ */
+    .why {
+      padding: 6rem 0;
+      background: var(--snow);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .why-item {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .why-item:hover {
+      border-color: var(--aqua);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-3px);
+    }
+    .why-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .why-title {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    .why-text {
+      font-size: 0.87rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       NAHRADNI PLNENI – Special section
+    ============================================================ */
+    .nahradni {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--hero-bg) 0%, #0C4268 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .nahradni::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(34,196,125,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .nahradni-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .nahradni .section-label {
+      background: rgba(34,196,125,0.15);
+      border-color: rgba(34,196,125,0.3);
+      color: var(--jade);
+    }
+    .nahradni .section-title { color: var(--white); }
+    .nahradni .section-sub { color: rgba(255,255,255,0.7); max-width: 100%; }
+    .nahradni-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .nahradni-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .nahradni-list li .check { color: var(--jade); font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+    .nahradni-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .nahradni-card-emoji {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .nahradni-card-title {
+      font-family: var(--ff-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .nahradni-card-text {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ============================================================
+       REVIEWS
+    ============================================================ */
+    .reviews {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .review-card {
+      background: var(--snow);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: var(--transition);
+    }
+    .review-card:hover {
+      border-color: rgba(20,200,224,0.3);
+      box-shadow: var(--shadow-sm);
+    }
+    .review-stars {
+      color: #F59E0B;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.85rem;
+    }
+    .review-text {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--aqua), var(--jade));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-head);
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--hero-bg);
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-family: var(--ff-head);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .review-source {
+      font-size: 0.76rem;
+      color: var(--text-light);
+    }
+
+    /* ============================================================
+       LOCATIONS
+    ============================================================ */
+    .locations {
+      padding: 6rem 0;
+      background: var(--snow);
+    }
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+    .location-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      font-family: var(--ff-head);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+    .location-pill:hover {
+      border-color: var(--aqua);
+      color: var(--aqua-dark);
+      background: rgba(20,200,224,0.05);
+    }
+    .location-pill .pin { font-size: 0.9rem; }
+
+    /* ============================================================
+       TEAM
+    ============================================================ */
+    .team {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .team-card {
+      background: var(--snow);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .team-card:hover {
+      border-color: rgba(20,200,224,0.3);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-3px);
+    }
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--aqua) 0%, var(--jade) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-head);
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin: 0 auto 1.2rem;
+      position: relative;
+    }
+    .team-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 2px solid var(--aqua);
+      opacity: 0.4;
+    }
+    .team-name {
+      font-family: var(--ff-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+    }
+    .team-role {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--aqua-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+    .team-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .team-contact a {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: color var(--transition);
+      min-height: 44px;
+    }
+    .team-contact a:hover { color: var(--aqua-dark); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact {
+      padding: 6rem 0;
+      background: var(--snow);
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-form {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+    .contact-form-title {
+      font-family: var(--ff-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 1.75rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-family: var(--ff-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      color: var(--text-dark);
+      background: var(--snow);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      min-height: 44px;
+    }
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--aqua);
+      box-shadow: 0 0 0 3px rgba(20,200,224,0.12);
+      background: var(--white);
+    }
+    .form-consent {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .form-consent a {
+      color: var(--aqua-dark);
+      text-decoration: underline;
+    }
+    .contact-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .info-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+    .info-block-title {
+      font-family: var(--ff-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--aqua-dark);
+      margin-bottom: 1rem;
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+    .info-row:last-child { margin-bottom: 0; }
+    .info-emoji {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .info-text {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+    .info-text strong {
+      font-family: var(--ff-head);
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+    .info-text a {
+      color: var(--aqua-dark);
+      transition: color var(--transition);
+      font-weight: 600;
+    }
+    .info-text a:hover { color: var(--jade); }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1rem;
+    }
+    .hours-day {
+      font-family: var(--ff-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .hours-time {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--hero-bg);
+      padding: 4rem 0 2rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .nav-logo { margin-bottom: 1rem; }
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      max-width: 300px;
+      margin-bottom: 1.25rem;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+    .social-btn:hover {
+      background: var(--aqua);
+      border-color: var(--aqua);
+    }
+    .footer-col-title {
+      font-family: var(--ff-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-links li a {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      transition: color var(--transition);
+      display: inline-block;
+      min-height: 44px;
+      line-height: 44px;
+    }
+    .footer-links li a:hover { color: var(--aqua); }
+    .footer-bottom {
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-legal {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ============================================================
+       RESPONSIVE — 1024px
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .hero-inner { gap: 2.5rem; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .locations-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — 768px
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links, .nav-phone { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+        padding-top: 1rem;
+      }
+      .hero-badge, .hero-trust { justify-content: center; }
+      .hero-actions { justify-content: center; }
+      .hero-sub { margin: 0 auto 2rem; }
+      .hero-card { display: none; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .nahradni-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — 640px
+    ============================================================ */
+    @media (max-width: 640px) {
+      .container { padding: 0 1.25rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .team-grid { grid-template-columns: 1fr; }
+      .locations-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { min-height: auto; padding: 120px 0 4rem; }
+      .hero-h1 { font-size: 2rem; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .hero-actions .btn { width: 100%; max-width: 300px; justify-content: center; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .section-title { font-size: 1.65rem; }
+      .services, .why, .reviews, .locations, .team, .contact { padding: 4rem 0; }
+      .nahradni { padding: 3.5rem 0; }
+      .contact-form { padding: 1.75rem; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — 428px
+    ============================================================ */
+    @media (max-width: 428px) {
+      .container { padding: 0 1rem; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .stat-number { font-size: 1.8rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .hero-trust { flex-direction: column; gap: 0.75rem; }
+      .services, .why, .reviews, .locations, .team, .contact { padding: 3rem 0; }
+      .nahradni { padding: 3rem 0; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — 375px
+    ============================================================ */
+    @media (max-width: 375px) {
+      .hero-h1 { font-size: 1.85rem; }
+      .locations-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+      .location-pill { padding: 0.6rem 0.75rem; font-size: 0.8rem; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — 320px
+    ============================================================ */
+    @media (max-width: 320px) {
+      .hero-h1 { font-size: 1.65rem; }
+      .nav-logo-text { font-size: 1.4rem; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .locations-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">🧹</div>
+        <div class="nav-logo-text">BT <span>Facility</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#sluzby">Služby</a></li>
+        <li><a href="#proc-my">Proč my</a></li>
+        <li><a href="#reference">Reference</a></li>
+        <li><a href="#tym">Tým</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="tel:+420601010127" class="nav-phone">
+        📞 601 01 01 27
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Otevřít menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#sluzby" class="mobile-link">Služby</a>
+  <a href="#proc-my" class="mobile-link">Proč my</a>
+  <a href="#reference" class="mobile-link">Reference</a>
+  <a href="#tym" class="mobile-link">Tým</a>
+  <a href="#kontakt" class="mobile-link">Kontakt</a>
+  <a href="tel:+420601010127" class="nav-phone" style="font-size:1.1rem;padding:0.8rem 1.8rem;">📞 601 01 01 27</a>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero-dots"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          ✅ Pojištěná firma · Od roku 2008
+        </div>
+        <h1 class="hero-h1">
+          Čistota, na kterou se<br>
+          <span class="highlight">můžete spolehnout</span>
+        </h1>
+        <p class="hero-sub">
+          Profesionální úklid firem, domácností i bytových domů na Uherskohradišťsku.
+          Spolehlivý tým, moderní vybavení, férová cena.
+        </p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn btn-aqua">
+            ✉️ Nezávazná poptávka
+          </a>
+          <a href="tel:+420601010127" class="btn btn-ghost">
+            📞 Zavolat nám
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="icon">⭐</span>
+            <span>Hodnocení 5/5 na Google</span>
+          </div>
+          <div class="trust-item">
+            <span class="icon">📍</span>
+            <span>UH a celý Zlínský kraj</span>
+          </div>
+          <div class="trust-item">
+            <span class="icon">⚡</span>
+            <span>Rychlá reakce do 24 h</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div>
+          <div class="hero-card-title">Naše služby</div>
+          <div class="service-tags">
+            <span class="service-tag">🏢 Úklid firem</span>
+            <span class="service-tag">🏠 Úklid domácností</span>
+            <span class="service-tag">🪟 Mytí oken</span>
+            <span class="service-tag">🛋️ Čištění koberců</span>
+            <span class="service-tag">🧽 Strojové čištění podlah</span>
+            <span class="service-tag">🏗️ Úklid po rekonstrukci</span>
+            <span class="service-tag">🔧 Půjčovna strojů</span>
+            <span class="service-tag">♿ Náhradní plnění</span>
+          </div>
+        </div>
+        <div class="hero-card-cta">
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:0.5rem;font-family:var(--ff-head);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Volejte nám přímo</div>
+          <div class="hero-card-phone">
+            📞 601 01 01 27
+            <div>
+              <small>Po–Pá 7:00–19:30</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS BAR
+============================================================ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item fade-up">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">let na trhu</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">spokojených klientů</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-number">9</div>
+        <div class="stat-label">druhů služeb</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">měst v okolí</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section class="services" id="sluzby">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label fade-up">Služby</span>
+      <h2 class="section-title fade-up">Co pro vás uděláme</h2>
+      <p class="section-sub fade-up">
+        Nabízíme kompletní spektrum úklidových služeb — od pravidelného úklidu kanceláří
+        po hloubkové čištění koberců a strojové mytí podlah.
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <span class="service-icon">🏢</span>
+        <div class="service-name">Úklid firem a kanceláří</div>
+        <div class="service-desc">Pravidelný i jednorázový úklid kanceláří, administrativních, obchodních, výrobních a skladových prostor. Přizpůsobíme se vašim potřebám a provozu.</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🏠</span>
+        <div class="service-name">Úklid domácností</div>
+        <div class="service-desc">Postaráme se o váš byt nebo dům tak, abyste se mohli věnovat tomu, co vás baví. Pravidelný i jednorázový úklid, generální úklid.</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🪟</span>
+        <div class="service-name">Mytí oken, výloh a žaluzií</div>
+        <div class="service-desc">Profesionální mytí oken zevnitř i zvenku, výloh obchodů a kancelářských prostor. Čisté žaluzie a rolety jako nové.</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🛋️</span>
+        <div class="service-name">Čištění koberců a čalounění</div>
+        <div class="service-desc">Hloubkové čištění koberců, sedaček, čalouněného nábytku i rohoží strojovým způsobem. Odstraníme nečistoty, roztoče i alergeny.</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🧽</span>
+        <div class="service-name">Strojové čištění podlah</div>
+        <div class="service-desc">Strojové mytí a leštění tvrdých podlah — dlažby, PVC, vinylu i parketu. Ideální pro provozovny, sklady a průmyslové prostory.</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🏗️</span>
+        <div class="service-name">Úklid po rekonstrukci</div>
+        <div class="service-desc">Porekonstrukční úklid po malování, řemeslnících a stavebních pracích. Odstraníme prach, zbytky materiálů a uvedeme prostory do provozuschopného stavu.</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🏘️</span>
+        <div class="service-name">Úklid bytových domů a SVJ</div>
+        <div class="service-desc">Pravidelný úklid společných prostor bytových domů, panelových domů, čínžovních domů a SVJ. Schody, chodby, výtahy, sklepní prostory.</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">Půjčovna strojů Kärcher</div>
+        <div class="service-desc">Zapůjčíme profesionální stroj Kärcher na čištění koberců, sedáček a čalounění. Denní i víkendová výpůjčka, výhodné ceny.</div>
+      </div>
+      <div class="service-card fade-up">
+        <span class="service-icon">♿</span>
+        <div class="service-name">Náhradní plnění</div>
+        <div class="service-desc">Pomůžeme vám splnit zákonnou povinnost zaměstnávání OZP (§ 81 zák. č. 435/2004 Sb.). Odběrem našich služeb přispíváte k zaměstnanosti zdravotně postižených.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY US
+============================================================ -->
+<section class="why" id="proc-my">
+  <div class="container">
+    <div class="section-head" style="text-align:center;">
+      <span class="section-label fade-up">Proč BT Facility</span>
+      <h2 class="section-title fade-up" style="margin:0 auto 1rem;">Váš spolehlivý partner<br>v čistotě</h2>
+      <p class="section-sub fade-up" style="margin:0 auto;">
+        Nestojíme jen za čistými prostorami — stojíme za bezstarostností, spolehlivostí a profesionálním přístupem.
+      </p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item fade-up">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">Pojištěná firma</div>
+        <div class="why-text">Naši pracovníci i firma jsou plně pojištěni. V nepravděpodobném případě škody jsme kryti — vaše majetek je v bezpečí.</div>
+      </div>
+      <div class="why-item fade-up">
+        <div class="why-icon">📅</div>
+        <div class="why-title">Od roku 2008</div>
+        <div class="why-text">15+ let zkušeností na trhu. Víme, co funguje, máme prověřené postupy a stabilní tým, který se nestříhá každý měsíc.</div>
+      </div>
+      <div class="why-item fade-up">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">Flexibilita a rychlost</div>
+        <div class="why-text">Reagujeme do 24 hodin. Přizpůsobíme termíny vašemu provozu — i mimo pracovní dobu nebo o víkendech.</div>
+      </div>
+      <div class="why-item fade-up">
+        <div class="why-icon">👥</div>
+        <div class="why-title">Prověřený tým</div>
+        <div class="why-text">Pracujeme jen s prověřenými, spolehlivými pracovníky v jednotném oblečení. Každý úklid probíhá dle standardizovaných postupů.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NAHRADNI PLNENI
+============================================================ -->
+<section class="nahradni">
+  <div class="container">
+    <div class="nahradni-inner">
+      <div>
+        <span class="section-label">Speciální služba</span>
+        <h2 class="section-title">Náhradní plnění pro firmy</h2>
+        <p class="section-sub">
+          Jako zaměstnavatel s více než 25 zaměstnanci máte ze zákona povinnost zaměstnávat osoby se zdravotním postižením — nebo tuto povinnost splnit náhradním plněním.
+        </p>
+        <ul class="nahradni-list">
+          <li>
+            <span class="check">✅</span>
+            <span>Odběrem našich služeb snižujete odvod do státního fondu (100 000 Kč za nevyplněné místo)</span>
+          </li>
+          <li>
+            <span class="check">✅</span>
+            <span>Pomáháte zaměstnávat zdravotně postižené osoby — splníte povinnost smysluplně</span>
+          </li>
+          <li>
+            <span class="check">✅</span>
+            <span>Poskytujeme veškeré doklady a potvrzení potřebné pro daňové účely</span>
+          </li>
+          <li>
+            <span class="check">✅</span>
+            <span>Stálý partnerský přístup — vyřídíme vše od první schůzky po evidenci</span>
+          </li>
+        </ul>
+        <a href="#kontakt" class="btn btn-jade">
+          ♿ Mám zájem o náhradní plnění
+        </a>
+      </div>
+      <div class="nahradni-card fade-up">
+        <div class="nahradni-card-emoji">♿</div>
+        <div class="nahradni-card-title">§ 81 zák. č. 435/2004 Sb.</div>
+        <div class="nahradni-card-text">
+          BT Facility je registrovaný dodavatel náhradního plnění. Jako firma, která zaměstnává OZP osoby, vám vystavíme potřebné doklady a pomůžeme splnit zákonnou povinnost bez zbytečné byrokracie.
+        </div>
+        <a href="tel:+420601010127" class="btn btn-ghost" style="border-color:rgba(255,255,255,0.3);color:var(--white);width:100%;justify-content:center;">
+          📞 Zavolat a zjistit víc
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REVIEWS
+============================================================ -->
+<section class="reviews" id="reference">
+  <div class="container">
+    <div class="section-head" style="text-align:center;">
+      <span class="section-label fade-up">Reference</span>
+      <h2 class="section-title fade-up" style="margin:0 auto 1rem;">Co říkají naši klienti</h2>
+      <p class="section-sub fade-up" style="margin:0 auto;">
+        Spokojenost klientů je naší největší odměnou. Přečtěte si, co o nás říkají.
+      </p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Naprosto spokojeni! Paní přišla v dohodnutý čas, pracovala svědomitě a diskrétně. Byt po úklidu vypadal skvěle — všude uklizeno, vonné čisto. Určitě opakujeme."</p>
+        <div class="review-author">
+          <div class="review-avatar">LB</div>
+          <div>
+            <div class="review-name">Lucie B.</div>
+            <div class="review-source">Google recenze · Uherské Hradiště</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„BT Facility uklízí naše kanceláře pravidelně již 3 roky. Vysoce profesionální tým, spolehlivost na jedničku. Doporučuji každé firmě, která hledá kvalitního partnera pro úklid."</p>
+        <div class="review-author">
+          <div class="review-avatar">PH</div>
+          <div>
+            <div class="review-name">Pavel H.</div>
+            <div class="review-source">Google recenze · Firma, Uherský Brod</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Objednala jsem čištění koberců a sedaček. Výsledek mě překvapil — vypadaly jako nové, i stará skvrna zmizela. Cena odpovídá kvalitě. Výborné!"</p>
+        <div class="review-author">
+          <div class="review-avatar">MK</div>
+          <div>
+            <div class="review-name">Markéta K.</div>
+            <div class="review-source">Google recenze · Kunovice</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LOCATIONS
+============================================================ -->
+<section class="locations">
+  <div class="container">
+    <div class="section-head" style="text-align:center;">
+      <span class="section-label fade-up">Kde působíme</span>
+      <h2 class="section-title fade-up" style="margin:0 auto 0.5rem;">Uherskohradišťsko a okolí</h2>
+      <p class="section-sub fade-up" style="margin:0 auto;">
+        Působíme v celém Zlínském kraji. Není vaše město v seznamu? Zavolejte nám — rádi se domluvíme.
+      </p>
+    </div>
+    <div class="locations-grid">
+      <div class="location-pill fade-up"><span class="pin">📍</span> Uherské Hradiště</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Uherský Brod</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Staré Město</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Kunovice</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Velehrad</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Veselí nad Moravou</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Uherský Ostroh</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Buchlovice</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Napajedla</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Zlín</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> Olomouc</div>
+      <div class="location-pill fade-up"><span class="pin">📍</span> A okolí…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TEAM
+============================================================ -->
+<section class="team" id="tym">
+  <div class="container">
+    <div class="section-head" style="text-align:center;">
+      <span class="section-label fade-up">Náš tým</span>
+      <h2 class="section-title fade-up" style="margin:0 auto 1rem;">Jsme tu pro vás</h2>
+      <p class="section-sub fade-up" style="margin:0 auto;">
+        Za BT Facility stojí zkušený tým profesionálů. Neváhejte nás kontaktovat přímo.
+      </p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fade-up">
+        <div class="team-avatar">DH</div>
+        <div class="team-name">Dagmar Hyková</div>
+        <div class="team-role">Vedoucí obchodní</div>
+        <p style="font-size:0.87rem;color:var(--text-mid);line-height:1.6;">Obchodní jednání, cenové nabídky a koordinace zakázek. Vaše první kontakt pro novou spolupráci.</p>
+        <div class="team-contact">
+          <a href="tel:+420773718448">📞 +420 773 718 448</a>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-avatar">BH</div>
+        <div class="team-name">Barbora Hůrková</div>
+        <div class="team-role">Vedoucí kanceláře</div>
+        <p style="font-size:0.87rem;color:var(--text-mid);line-height:1.6;">Administrativa, plánování úklidů a komunikace s klienty. Stará se o hladký chod celé firmy.</p>
+        <div class="team-contact">
+          <a href="tel:+420601010127">📞 601 01 01 27</a>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-avatar">JČ</div>
+        <div class="team-name">Jana Čermáčková</div>
+        <div class="team-role">Manažerka</div>
+        <p style="font-size:0.87rem;color:var(--text-mid);line-height:1.6;">Řídí terénní tým a dohlíží na kvalitu každé zakázky. Osobní zárukou spokojenosti každého klienta.</p>
+        <div class="team-contact">
+          <a href="mailto:jana.cermackova@btfacility.cz">✉️ jana.cermackova@btfacility.cz</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="contact" id="kontakt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label fade-up">Kontakt</span>
+      <h2 class="section-title fade-up">Připraveni poradit vám</h2>
+      <p class="section-sub fade-up">Kontaktujte nás v pracovní dny od 7:00 do 19:30. Odepíšeme do 24 hodin.</p>
+    </div>
+    <div class="contact-inner">
+      <div class="contact-form fade-up">
+        <div class="contact-form-title">Nezávazná poptávka</div>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Jméno a příjmení</label>
+              <input type="text" id="name" name="name" placeholder="Jan Novák">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone" placeholder="+420 xxx xxx xxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="vas@email.cz">
+          </div>
+          <div class="form-group">
+            <label for="service">Typ služby</label>
+            <select id="service" name="service">
+              <option value="">— Vyberte službu —</option>
+              <option>Úklid firmy / kanceláří</option>
+              <option>Úklid domácnosti</option>
+              <option>Mytí oken a výloh</option>
+              <option>Čištění koberců a sedáček</option>
+              <option>Strojové čištění podlah</option>
+              <option>Úklid po rekonstrukci</option>
+              <option>Úklid bytového domu / SVJ</option>
+              <option>Půjčovna strojů</option>
+              <option>Náhradní plnění</option>
+              <option>Jiné</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Zpráva</label>
+            <textarea id="message" name="message" placeholder="Popište váš požadavek, adresu, orientační velikost prostor…"></textarea>
+          </div>
+          <div class="form-consent">
+            Odesláním souhlasíte se zpracováním osobních údajů dle <a href="#">zásad ochrany osobních údajů</a>.
+          </div>
+          <button type="submit" class="btn btn-aqua" style="width:100%;justify-content:center;font-size:1rem;">
+            📨 Odeslat poptávku
+          </button>
+        </form>
+      </div>
+      <div class="contact-info-col fade-up">
+        <div class="info-block">
+          <div class="info-block-title">Provozovna</div>
+          <div class="info-row">
+            <span class="info-emoji">📍</span>
+            <div class="info-text">
+              <strong>Přímětická 712</strong><br>
+              669 01 Uherské Hradiště
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="info-emoji">📞</span>
+            <div class="info-text">
+              <a href="tel:+420601010127">601 01 01 27</a>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="info-emoji">✉️</span>
+            <div class="info-text">
+              <a href="mailto:info@btfacility.cz">info@btfacility.cz</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">Otevírací doba</div>
+          <div class="hours-grid">
+            <span class="hours-day">Provozovna</span><span class="hours-time"></span>
+            <span class="hours-day">Po – Čt</span><span class="hours-time">7:00 – 15:30</span>
+            <span class="hours-day">Pá</span><span class="hours-time">7:00 – 15:00</span>
+            <span class="hours-day" style="margin-top:0.5rem;">Telefon</span><span class="hours-time"></span>
+            <span class="hours-day">Po – Pá</span><span class="hours-time">7:00 – 19:30</span>
+            <span class="hours-day">So</span><span class="hours-time">8:00 – 13:00</span>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">Fakturační údaje</div>
+          <div class="info-row">
+            <span class="info-emoji">🏢</span>
+            <div class="info-text">
+              <strong>Korda Servis s.r.o.</strong><br>
+              Rudý Kubíčka 198, 686 25 Hradiště<br>
+              IČ: 06260117 · DIČ: CZ06260117
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-icon">🧹</div>
+          <div class="nav-logo-text">BT <span>Facility</span></div>
+        </div>
+        <p>Profesionální úklidové služby od roku 2008. Firmy, domácnosti, bytové domy — jsme tu pro vás v celém Uherskohradišťsku a Zlínském kraji.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/btfacility" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+          <a href="https://www.instagram.com/btfacility" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Služby</div>
+        <ul class="footer-links">
+          <li><a href="#sluzby">Úklid firem a kanceláří</a></li>
+          <li><a href="#sluzby">Úklid domácností</a></li>
+          <li><a href="#sluzby">Mytí oken a výloh</a></li>
+          <li><a href="#sluzby">Čištění koberců a sedáček</a></li>
+          <li><a href="#sluzby">Strojové čištění podlah</a></li>
+          <li><a href="#sluzby">Náhradní plnění</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Kontakt</div>
+        <ul class="footer-links">
+          <li><a href="tel:+420601010127">📞 601 01 01 27</a></li>
+          <li><a href="mailto:info@btfacility.cz">✉️ info@btfacility.cz</a></li>
+          <li><a href="#kontakt">📍 Uherské Hradiště</a></li>
+          <li><a href="#kontakt">🕐 Po–Pá 7:00–19:30</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Korda Servis s.r.o. · BT Facility · Všechna práva vyhrazena</div>
+      <div class="footer-legal">IČ: 06260117 · DIČ: CZ06260117</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  // Close mobile nav on link click
+  document.querySelectorAll('.mobile-link, .mobile-nav .nav-phone').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Intersection Observer for fade-up animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Form submit
+  document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('[type="submit"]');
+    btn.textContent = '✅ Odesláno! Brzy se ozveme.';
+    btn.style.background = 'var(--jade)';
+    btn.disabled = true;
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
