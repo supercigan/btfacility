@@ -399,151 +399,67 @@
     /* Hero visual – floating cards */
     .hero-visual {
       position: relative;
-      height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      align-self: stretch;
+      min-height: 420px;
     }
-    .hv-cards {
+    /* Hero visual – aurora */
+    .hero-aurora {
       position: relative;
-      width: 420px;
-      height: 520px;
-    }
-    .hv-card {
-      position: absolute;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: 22px;
-      padding: 1.9rem 2.1rem;
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
       overflow: hidden;
-    }
-    /* Diagonální lesk přes celou kartu */
-    .hv-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        130deg,
-        rgba(255,255,255,0.10) 0%,
-        rgba(255,255,255,0.04) 45%,
-        transparent 55%
-      );
       pointer-events: none;
-      border-radius: inherit;
     }
-    /* Rohová jiskra — každá karta má svůj roh */
-    .hv-card::after {
-      content: '';
+    .a-orb {
       position: absolute;
-      width: 80px; height: 80px;
       border-radius: 50%;
-      pointer-events: none;
-      filter: blur(10px);
+      filter: blur(72px);
+      will-change: transform;
     }
-    .hv-card--1::after {
-      top: -20px; left: -20px;
-      background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, transparent 70%);
+    /* Orb 1 — velký aqua, střed-vlevo */
+    .a-orb--1 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(20,200,224,0.38) 0%, transparent 70%);
+      top: 5%; left: -8%;
+      animation: orbDrift1 14s ease-in-out infinite alternate;
     }
-    .hv-card--2::after {
-      top: -20px; right: -20px; left: auto;
-      background: radial-gradient(circle, rgba(20,200,224,0.65) 0%, transparent 70%);
+    /* Orb 2 — střední jade, vpravo-dole */
+    .a-orb--2 {
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(34,196,125,0.30) 0%, transparent 70%);
+      bottom: 0%; right: -5%;
+      animation: orbDrift2 18s ease-in-out infinite alternate;
     }
-    .hv-card--3::after {
-      bottom: -20px; right: -20px; top: auto; left: auto;
-      background: radial-gradient(circle, rgba(34,196,125,0.60) 0%, transparent 70%);
+    /* Orb 3 — malý bílý, vpravo-nahoře — světelný bod */
+    .a-orb--3 {
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%);
+      top: 8%; right: 10%;
+      animation: orbDrift3 11s ease-in-out infinite alternate;
     }
-    .hv-card--1 {
-      top: 0; left: 0;
-      width: 245px;
-      transform: rotate(-4deg);
-      animation: cardFloat1 5s ease-in-out infinite;
+    /* Orb 4 — tmavší aqua, střed — hloubka */
+    .a-orb--4 {
+      width: 320px; height: 220px;
+      background: radial-gradient(ellipse, rgba(14,160,185,0.20) 0%, transparent 70%);
+      top: 35%; left: 20%;
+      animation: orbDrift4 22s ease-in-out infinite alternate;
     }
-    .hv-card--2 {
-      top: 130px; right: 0;
-      width: 270px;
-      animation: cardFloat2 6s ease-in-out infinite;
-      z-index: 2;
+    @keyframes orbDrift1 {
+      from { transform: translate(0,   0)   scale(1);    }
+      to   { transform: translate(40px, -50px) scale(1.08); }
     }
-    .hv-card--3 {
-      bottom: 0; left: 10px;
-      width: 260px;
-      transform: rotate(3deg);
-      animation: cardFloat3 5.5s ease-in-out infinite;
+    @keyframes orbDrift2 {
+      from { transform: translate(0,   0)    scale(1);    }
+      to   { transform: translate(-50px, 30px) scale(1.12); }
     }
-    @keyframes cardFloat1 {
-      0%, 100% { transform: rotate(-3deg) translateY(0);    }
-      50%       { transform: rotate(-3deg) translateY(-10px); }
+    @keyframes orbDrift3 {
+      from { transform: translate(0,   0)    scale(1);   }
+      to   { transform: translate(20px, 35px) scale(0.9); }
     }
-    @keyframes cardFloat2 {
-      0%, 100% { transform: translateY(0);     }
-      50%       { transform: translateY(-14px); }
-    }
-    @keyframes cardFloat3 {
-      0%, 100% { transform: rotate(2deg) translateY(0);    }
-      50%       { transform: rotate(2deg) translateY(-8px); }
-    }
-    .hvc-label {
-      font-family: var(--ff-head);
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 0.6rem;
-    }
-    .hvc-num {
-      font-family: var(--ff-head);
-      font-size: 2.9rem;
-      font-weight: 800;
-      color: var(--aqua);
-      line-height: 1;
-    }
-    .hvc-sub {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.6);
-      margin-top: 0.3rem;
-      font-family: var(--ff-head);
-      font-weight: 500;
-    }
-    .hvc-stars {
-      color: #F59E0B;
-      font-size: 1.05rem;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-    .hvc-rating {
-      font-family: var(--ff-head);
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
-    }
-    .hvc-dot {
-      display: inline-block;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      margin-right: 0.5rem;
-      vertical-align: middle;
-    }
-    .hvc-dot--aqua { background: var(--aqua); box-shadow: 0 0 6px var(--aqua); }
-    .hvc-dot--jade { background: var(--jade); box-shadow: 0 0 6px var(--jade); }
-    .hvc-status {
-      font-family: var(--ff-head);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.65);
-    }
-    /* Glow blob behind cards */
-    .hv-glow {
-      position: absolute;
-      width: 260px; height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(20,200,224,0.12) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
+    @keyframes orbDrift4 {
+      from { transform: translate(0,   0)    scale(1);    }
+      to   { transform: translate(-30px, -40px) scale(1.15); }
     }
 
     /* ============================================================
@@ -1338,30 +1254,11 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hv-glow"></div>
-        <div class="hv-cards">
-          <!-- Karta 1: Roky zkušeností -->
-          <div class="hv-card hv-card--1">
-            <div class="hvc-label">Na trhu od roku</div>
-            <div class="hvc-num">2008</div>
-            <div class="hvc-sub">15+ let zkušeností</div>
-          </div>
-          <!-- Karta 2: Hodnocení -->
-          <div class="hv-card hv-card--2">
-            <div class="hvc-label">Google hodnocení</div>
-            <div class="hvc-stars">★★★★★</div>
-            <div class="hvc-rating">4.9 / 5</div>
-            <div class="hvc-sub" style="margin-top:0.5rem;">ověřené recenze</div>
-          </div>
-          <!-- Karta 3: Reakce -->
-          <div class="hv-card hv-card--3">
-            <div class="hvc-label">Reakce na poptávku</div>
-            <div class="hvc-num" style="color:var(--jade);">&lt; 24h</div>
-            <div style="margin-top:0.75rem;">
-              <span class="hvc-dot hvc-dot--jade"></span>
-              <span class="hvc-status">Dostupní Po–So</span>
-            </div>
-          </div>
+        <div class="hero-aurora">
+          <div class="a-orb a-orb--1"></div>
+          <div class="a-orb a-orb--2"></div>
+          <div class="a-orb a-orb--3"></div>
+          <div class="a-orb a-orb--4"></div>
         </div>
       </div>
     </div>
