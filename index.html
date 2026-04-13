@@ -1031,6 +1031,63 @@
     /* ============================================================
        CONTACT
     ============================================================ */
+    /* PROMO STRIP */
+    .promo-strip {
+      background: linear-gradient(135deg, var(--jade) 0%, #1aad6c 100%);
+      padding: 2.5rem 0;
+    }
+    .promo-strip .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .promo-strip-text {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .promo-strip-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+    .promo-strip-copy h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 0.25rem;
+    }
+    .promo-strip-copy p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.88);
+      margin: 0;
+    }
+    .promo-strip-btn {
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: #fff;
+      color: #1aad6c;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .promo-strip-btn:hover {
+      background: var(--hero-bg);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
     .contact {
       padding: 6rem 0;
       background: var(--snow);
@@ -1314,6 +1371,8 @@
       .section-title { font-size: 1.65rem; }
       .services, .why, .reviews, .locations, .team, .contact { padding: 4rem 0; }
       .nahradni { padding: 3.5rem 0; }
+      .promo-strip .container { flex-direction: column; text-align: center; }
+      .promo-strip-text { flex-direction: column; gap: 0.75rem; }
       .contact-form { padding: 1.75rem; }
     }
 
@@ -1981,6 +2040,22 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROMO STRIP
+============================================================ -->
+<section class="promo-strip">
+  <div class="container">
+    <div class="promo-strip-text">
+      <div class="promo-strip-icon">🎁</div>
+      <div class="promo-strip-copy">
+        <h3>Jste u nás poprvé?</h3>
+        <p>Získejte <strong>10 % slevu na první objednávku</strong> — stačí zmínit při poptávce.</p>
+      </div>
+    </div>
+    <a href="#kontakt" class="promo-strip-btn">Poptávka zdarma →</a>
   </div>
 </section>
 
