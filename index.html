@@ -916,32 +916,71 @@
     ============================================================ */
     .locations {
       padding: 6rem 0;
-      background: var(--snow);
+      background: linear-gradient(160deg, var(--hero-bg) 0%, var(--hero-mid) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .locations::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20,200,224,0.07) 0%, transparent 70%);
+      top: -200px;
+      right: -150px;
+      pointer-events: none;
+    }
+    .locations .section-label { color: var(--aqua); }
+    .locations .section-title { color: var(--white); }
+    .locations .section-sub { color: rgba(255,255,255,0.65); }
+    .locations-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 2.5rem;
+    }
+    .locations-big-num {
+      font-family: var(--ff-head);
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--aqua);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .locations-big-label {
+      font-family: var(--ff-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.3;
+      max-width: 100px;
     }
     .locations-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 0.75rem;
-      margin-top: 2.5rem;
+      gap: 0.65rem;
     }
     .location-pill {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
       border-radius: 10px;
-      padding: 0.7rem 1rem;
+      padding: 0.75rem 1rem;
       font-family: var(--ff-head);
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--text-dark);
+      color: rgba(255,255,255,0.85);
       transition: var(--transition);
+      backdrop-filter: blur(6px);
     }
     .location-pill:hover {
-      border-color: var(--aqua);
-      color: var(--aqua-dark);
-      background: rgba(20,200,224,0.05);
+      background: rgba(20,200,224,0.15);
+      border-color: rgba(20,200,224,0.45);
+      color: var(--white);
     }
     .location-pill .pin { font-size: 0.9rem; }
 
@@ -1315,6 +1354,7 @@
       .hero-inner { gap: 2.5rem; }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .locations-grid { grid-template-columns: repeat(3, 1fr); }
+      .locations-big-num { font-size: 4rem; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: 1 / -1; }
     }
@@ -2002,6 +2042,10 @@
       <p class="section-sub fade-up" style="margin:0 auto;">
         Působíme v celém Zlínském kraji. Není vaše město v seznamu? Zavolejte nám — rádi se domluvíme.
       </p>
+    </div>
+    <div class="locations-hero fade-up">
+      <div class="locations-big-num">10+</div>
+      <div class="locations-big-label">měst<br>a obcí</div>
     </div>
     <div class="locations-grid">
       <div class="location-pill fade-up"><span class="pin">📍</span> Uherské Hradiště</div>
