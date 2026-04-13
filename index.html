@@ -406,8 +406,8 @@
     }
     .hv-cards {
       position: relative;
-      width: 380px;
-      height: 440px;
+      width: 420px;
+      height: 520px;
     }
     .hv-card {
       position: absolute;
@@ -419,38 +419,57 @@
       padding: 1.9rem 2.1rem;
       overflow: hidden;
     }
-    /* Lesk — diagonální přechod přes kartu */
+    /* Diagonální lesk přes celou kartu */
     .hv-card::before {
       content: '';
       position: absolute;
-      top: 0; left: -60%;
-      width: 55%; height: 100%;
+      inset: 0;
       background: linear-gradient(
-        105deg,
-        transparent 0%,
-        rgba(255,255,255,0.08) 40%,
-        rgba(255,255,255,0.18) 50%,
-        rgba(255,255,255,0.08) 60%,
-        transparent 100%
+        130deg,
+        rgba(255,255,255,0.10) 0%,
+        rgba(255,255,255,0.04) 45%,
+        transparent 55%
       );
       pointer-events: none;
+      border-radius: inherit;
+    }
+    /* Rohová jiskra — každá karta má svůj roh */
+    .hv-card::after {
+      content: '';
+      position: absolute;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(10px);
+    }
+    .hv-card--1::after {
+      top: -20px; left: -20px;
+      background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, transparent 70%);
+    }
+    .hv-card--2::after {
+      top: -20px; right: -20px; left: auto;
+      background: radial-gradient(circle, rgba(20,200,224,0.65) 0%, transparent 70%);
+    }
+    .hv-card--3::after {
+      bottom: -20px; right: -20px; top: auto; left: auto;
+      background: radial-gradient(circle, rgba(34,196,125,0.60) 0%, transparent 70%);
     }
     .hv-card--1 {
       top: 0; left: 0;
-      width: 240px;
-      transform: rotate(-3deg);
+      width: 245px;
+      transform: rotate(-4deg);
       animation: cardFloat1 5s ease-in-out infinite;
     }
     .hv-card--2 {
-      top: 100px; right: 0;
-      width: 265px;
+      top: 130px; right: 0;
+      width: 270px;
       animation: cardFloat2 6s ease-in-out infinite;
       z-index: 2;
     }
     .hv-card--3 {
-      bottom: 0; left: 20px;
-      width: 255px;
-      transform: rotate(2deg);
+      bottom: 0; left: 10px;
+      width: 260px;
+      transform: rotate(3deg);
       animation: cardFloat3 5.5s ease-in-out infinite;
     }
     @keyframes cardFloat1 {
