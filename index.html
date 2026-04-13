@@ -2303,6 +2303,14 @@
       document.body.style.overflow = '';
     });
   });
+  // Reset scroll lock on viewport resize (e.g. DevTools open/close)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
 
   // Intersection Observer for fade-up animations
   const observer = new IntersectionObserver((entries) => {
