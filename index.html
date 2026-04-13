@@ -402,64 +402,84 @@
       align-self: stretch;
       min-height: 420px;
     }
-    /* Hero visual – aurora */
-    .hero-aurora {
+    /* Hero visual – static bubbles */
+    .bubbles-scene {
       position: relative;
       width: 100%;
       height: 100%;
       min-height: 480px;
-      overflow: hidden;
       pointer-events: none;
     }
-    .a-orb {
+    /* Bublina */
+    .sb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(72px);
-      will-change: transform;
+      background: radial-gradient(
+        circle at 30% 28%,
+        rgba(255,255,255,0.32) 0%,
+        rgba(255,255,255,0.10) 25%,
+        rgba(20,200,224,0.05) 55%,
+        rgba(255,255,255,0.12) 85%,
+        transparent 100%
+      );
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.05);
     }
-    /* Orb 1 — velký aqua, střed-vlevo */
-    .a-orb--1 {
-      width: 380px; height: 380px;
-      background: radial-gradient(circle, rgba(20,200,224,0.38) 0%, transparent 70%);
-      top: 5%; left: -8%;
-      animation: orbDrift1 14s ease-in-out infinite alternate;
+    /* Hlavní odlesk na bublině */
+    .sb::before {
+      content: '';
+      position: absolute;
+      top: 18%; left: 20%;
+      width: 32%; height: 16%;
+      background: rgba(255,255,255,0.55);
+      border-radius: 50%;
+      transform: rotate(-38deg);
+      filter: blur(2px);
     }
-    /* Orb 2 — střední jade, vpravo-dole */
-    .a-orb--2 {
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, rgba(34,196,125,0.30) 0%, transparent 70%);
-      bottom: 0%; right: -5%;
-      animation: orbDrift2 18s ease-in-out infinite alternate;
+    /* Spodní drobný odlesk */
+    .sb::after {
+      content: '';
+      position: absolute;
+      bottom: 18%; right: 18%;
+      width: 10%; height: 6%;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      filter: blur(1px);
     }
-    /* Orb 3 — malý bílý, vpravo-nahoře — světelný bod */
-    .a-orb--3 {
-      width: 160px; height: 160px;
-      background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%);
-      top: 8%; right: 10%;
-      animation: orbDrift3 11s ease-in-out infinite alternate;
+    /* Jiskra — 4bodová hvězda v rohu bubliny */
+    .sp {
+      position: absolute;
+      width: 2px;
+      height: 14px;
+      background: #fff;
+      border-radius: 1px;
+      box-shadow: 0 0 6px 2px rgba(255,255,255,0.9), 0 0 14px 4px rgba(20,200,224,0.6);
+      animation: spTwinkle var(--sd, 3s) ease-in-out var(--sdelay, 0s) infinite;
     }
-    /* Orb 4 — tmavší aqua, střed — hloubka */
-    .a-orb--4 {
-      width: 320px; height: 220px;
-      background: radial-gradient(ellipse, rgba(14,160,185,0.20) 0%, transparent 70%);
-      top: 35%; left: 20%;
-      animation: orbDrift4 22s ease-in-out infinite alternate;
+    .sp::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px; height: 2px;
+      background: #fff;
+      border-radius: 1px;
+      box-shadow: 0 0 6px 2px rgba(255,255,255,0.9);
     }
-    @keyframes orbDrift1 {
-      from { transform: translate(0,   0)   scale(1);    }
-      to   { transform: translate(40px, -50px) scale(1.08); }
+    /* Diagonální ramena hvězdy */
+    .sp::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 8px; height: 1.5px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 1px;
+      box-shadow: 0 0 4px rgba(255,255,255,0.7);
     }
-    @keyframes orbDrift2 {
-      from { transform: translate(0,   0)    scale(1);    }
-      to   { transform: translate(-50px, 30px) scale(1.12); }
-    }
-    @keyframes orbDrift3 {
-      from { transform: translate(0,   0)    scale(1);   }
-      to   { transform: translate(20px, 35px) scale(0.9); }
-    }
-    @keyframes orbDrift4 {
-      from { transform: translate(0,   0)    scale(1);    }
-      to   { transform: translate(-30px, -40px) scale(1.15); }
+    @keyframes spTwinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.7); }
+      50%       { opacity: 1;   transform: scale(1.3); }
     }
 
     /* ============================================================
@@ -1254,11 +1274,62 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-aurora">
-          <div class="a-orb a-orb--1"></div>
-          <div class="a-orb a-orb--2"></div>
-          <div class="a-orb a-orb--3"></div>
-          <div class="a-orb a-orb--4"></div>
+        <div class="bubbles-scene">
+          <!-- Každá .sb = bublina, .sp = jiskra uvnitř -->
+          <!-- velikost a pozice přes inline style -->
+
+          <!-- velká, střed nahoře -->
+          <div class="sb" style="width:130px;height:130px;top:4%;left:38%;">
+            <div class="sp" style="top:14%;right:18%;--sd:2.8s;--sdelay:0s;"></div>
+          </div>
+
+          <!-- střední, vlevo nahoře -->
+          <div class="sb" style="width:80px;height:80px;top:2%;left:8%;">
+            <div class="sp" style="top:16%;right:20%;--sd:3.5s;--sdelay:0.6s;"></div>
+          </div>
+
+          <!-- malá, vpravo nahoře -->
+          <div class="sb" style="width:48px;height:48px;top:8%;right:6%;">
+            <div class="sp" style="top:14%;right:16%;--sd:2.2s;--sdelay:1.2s;"></div>
+          </div>
+
+          <!-- velká, vpravo střed -->
+          <div class="sb" style="width:160px;height:160px;top:28%;right:2%;">
+            <div class="sp" style="top:12%;right:16%;--sd:4.0s;--sdelay:0.3s;"></div>
+          </div>
+
+          <!-- střední, vlevo střed -->
+          <div class="sb" style="width:90px;height:90px;top:35%;left:4%;">
+            <div class="sp" style="top:15%;right:18%;--sd:3.2s;--sdelay:1.8s;"></div>
+          </div>
+
+          <!-- malá, střed -->
+          <div class="sb" style="width:55px;height:55px;top:42%;left:42%;">
+            <div class="sp" style="top:13%;right:17%;--sd:2.5s;--sdelay:0.9s;"></div>
+          </div>
+
+          <!-- velká, vlevo dole -->
+          <div class="sb" style="width:110px;height:110px;bottom:8%;left:6%;">
+            <div class="sp" style="top:14%;right:19%;--sd:3.8s;--sdelay:2.1s;"></div>
+          </div>
+
+          <!-- střední, střed dole -->
+          <div class="sb" style="width:70px;height:70px;bottom:4%;left:40%;">
+            <div class="sp" style="top:14%;right:18%;--sd:2.9s;--sdelay:0.5s;"></div>
+          </div>
+
+          <!-- malá, vpravo dole -->
+          <div class="sb" style="width:42px;height:42px;bottom:14%;right:8%;">
+            <div class="sp" style="top:12%;right:16%;--sd:2.0s;--sdelay:1.5s;"></div>
+          </div>
+
+          <!-- velmi malá, různě -->
+          <div class="sb" style="width:30px;height:30px;top:60%;left:28%;">
+            <div class="sp" style="top:12%;right:14%;--sd:2.3s;--sdelay:3.0s;"></div>
+          </div>
+          <div class="sb" style="width:36px;height:36px;top:18%;left:24%;">
+            <div class="sp" style="top:13%;right:16%;--sd:3.1s;--sdelay:1.1s;"></div>
+          </div>
         </div>
       </div>
     </div>
