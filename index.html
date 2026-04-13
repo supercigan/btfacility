@@ -417,102 +417,118 @@
     }
     .trust-item .icon { font-size: 1rem; }
 
-    /* Hero visual – bubbles */
+    /* Hero visual – floating cards */
     .hero-visual {
       position: relative;
-      height: 480px;
-      overflow: hidden;
+      height: 420px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .bubble {
+    .hv-cards {
+      position: relative;
+      width: 300px;
+      height: 360px;
+    }
+    .hv-card {
       position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle at 32% 28%,
-        rgba(255,255,255,0.38) 0%,
-        rgba(255,255,255,0.12) 28%,
-        rgba(20,200,224,0.06) 55%,
-        rgba(255,255,255,0.14) 80%,
-        rgba(20,200,224,0.04) 100%
-      );
-      border: 1px solid rgba(255,255,255,0.22);
-      box-shadow:
-        inset 0 0 16px rgba(255,255,255,0.06),
-        0 0 24px rgba(20,200,224,0.08);
-      animation: bubbleRise var(--dur, 10s) ease-in-out var(--delay, 0s) infinite;
-      bottom: -120px;
-      left: var(--x, 50%);
-      width: var(--size, 60px);
-      height: var(--size, 60px);
-      opacity: 0;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 1.5rem 1.75rem;
     }
-    /* Main specular highlight */
-    .bubble::before {
-      content: '';
+    .hv-card--1 {
+      top: 0; left: 0;
+      width: 200px;
+      transform: rotate(-3deg);
+      animation: cardFloat1 5s ease-in-out infinite;
+    }
+    .hv-card--2 {
+      top: 80px; right: 0;
+      width: 220px;
+      animation: cardFloat2 6s ease-in-out infinite;
+      z-index: 2;
+    }
+    .hv-card--3 {
+      bottom: 0; left: 20px;
+      width: 210px;
+      transform: rotate(2deg);
+      animation: cardFloat3 5.5s ease-in-out infinite;
+    }
+    @keyframes cardFloat1 {
+      0%, 100% { transform: rotate(-3deg) translateY(0);    }
+      50%       { transform: rotate(-3deg) translateY(-10px); }
+    }
+    @keyframes cardFloat2 {
+      0%, 100% { transform: translateY(0);     }
+      50%       { transform: translateY(-14px); }
+    }
+    @keyframes cardFloat3 {
+      0%, 100% { transform: rotate(2deg) translateY(0);    }
+      50%       { transform: rotate(2deg) translateY(-8px); }
+    }
+    .hvc-label {
+      font-family: var(--ff-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.6rem;
+    }
+    .hvc-num {
+      font-family: var(--ff-head);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--aqua);
+      line-height: 1;
+    }
+    .hvc-sub {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.3rem;
+      font-family: var(--ff-head);
+      font-weight: 500;
+    }
+    .hvc-stars {
+      color: #F59E0B;
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .hvc-rating {
+      font-family: var(--ff-head);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hvc-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+    .hvc-dot--aqua { background: var(--aqua); box-shadow: 0 0 6px var(--aqua); }
+    .hvc-dot--jade { background: var(--jade); box-shadow: 0 0 6px var(--jade); }
+    .hvc-status {
+      font-family: var(--ff-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+    }
+    /* Glow blob behind cards */
+    .hv-glow {
       position: absolute;
-      top: 17%;
-      left: 20%;
-      width: 30%;
-      height: 16%;
-      background: rgba(255,255,255,0.6);
+      width: 260px; height: 260px;
       border-radius: 50%;
-      transform: rotate(-38deg);
-      filter: blur(1.5px);
-    }
-    /* Secondary small highlight */
-    .bubble::after {
-      content: '';
-      position: absolute;
-      bottom: 22%;
-      right: 18%;
-      width: 12%;
-      height: 8%;
-      background: rgba(255,255,255,0.28);
-      border-radius: 50%;
-      filter: blur(1px);
-    }
-    @keyframes bubbleRise {
-      0%   { transform: translateY(0)      translateX(0);    opacity: 0;   }
-      6%   { opacity: var(--op, 0.72); }
-      30%  { transform: translateY(-28%)   translateX(16px); }
-      55%  { transform: translateY(-54%)   translateX(-12px);}
-      78%  { transform: translateY(-78%)   translateX(10px); opacity: var(--op, 0.72); }
-      94%  { opacity: 0.15; }
-      100% { transform: translateY(-108%)  translateX(-6px); opacity: 0;   }
-    }
-    /* Central orb – subtle anchor element */
-    .bubble-orb {
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle at 38% 35%,
-        rgba(255,255,255,0.22) 0%,
-        rgba(20,200,224,0.12) 40%,
-        rgba(8,47,74,0.0) 70%
-      );
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow:
-        0 0 60px rgba(20,200,224,0.15),
-        inset 0 0 40px rgba(255,255,255,0.04);
-      animation: orbPulse 6s ease-in-out infinite;
-    }
-    @keyframes orbPulse {
-      0%, 100% { transform: scale(1);    opacity: 0.7; }
-      50%       { transform: scale(1.06); opacity: 1;   }
-    }
-    .bubble-orb::before {
-      content: '';
-      position: absolute;
-      top: 20%; left: 22%;
-      width: 35%; height: 20%;
-      background: rgba(255,255,255,0.45);
-      border-radius: 50%;
-      transform: rotate(-40deg);
-      filter: blur(3px);
+      background: radial-gradient(circle, rgba(20,200,224,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
     }
 
     /* ============================================================
@@ -1307,25 +1323,31 @@
         </div>
       </div>
       <div class="hero-visual">
-        <!-- Central orb -->
-        <div class="bubble-orb"></div>
-        <!-- Bubbles: --size, --x, --dur, --delay, --op -->
-        <div class="bubble" style="--size:28px;  --x:12%;  --dur:5s;  --delay:0s;    --op:0.65;"></div>
-        <div class="bubble" style="--size:52px;  --x:22%;  --dur:7s;  --delay:0.8s;  --op:0.70;"></div>
-        <div class="bubble" style="--size:18px;  --x:34%;  --dur:4s;  --delay:0.3s;  --op:0.55;"></div>
-        <div class="bubble" style="--size:76px;  --x:44%;  --dur:8s;  --delay:1.4s;  --op:0.75;"></div>
-        <div class="bubble" style="--size:38px;  --x:58%;  --dur:6s;  --delay:0.1s;  --op:0.68;"></div>
-        <div class="bubble" style="--size:96px;  --x:68%;  --dur:9s;  --delay:2.2s;  --op:0.72;"></div>
-        <div class="bubble" style="--size:22px;  --x:78%;  --dur:4s;  --delay:1.0s;  --op:0.60;"></div>
-        <div class="bubble" style="--size:60px;  --x:86%;  --dur:7s;  --delay:0.5s;  --op:0.70;"></div>
-        <div class="bubble" style="--size:44px;  --x:6%;   --dur:6s;  --delay:1.8s;  --op:0.65;"></div>
-        <div class="bubble" style="--size:110px; --x:30%;  --dur:10s; --delay:3.0s;  --op:0.78;"></div>
-        <div class="bubble" style="--size:32px;  --x:50%;  --dur:5s;  --delay:1.2s;  --op:0.62;"></div>
-        <div class="bubble" style="--size:68px;  --x:62%;  --dur:8s;  --delay:0.6s;  --op:0.74;"></div>
-        <div class="bubble" style="--size:24px;  --x:74%;  --dur:4s;  --delay:2.5s;  --op:0.58;"></div>
-        <div class="bubble" style="--size:84px;  --x:88%;  --dur:9s;  --delay:1.6s;  --op:0.76;"></div>
-        <div class="bubble" style="--size:16px;  --x:42%;  --dur:3s;  --delay:3.8s;  --op:0.50;"></div>
-        <div class="bubble" style="--size:48px;  --x:18%;  --dur:6s;  --delay:4.5s;  --op:0.67;"></div>
+        <div class="hv-glow"></div>
+        <div class="hv-cards">
+          <!-- Karta 1: Roky zkušeností -->
+          <div class="hv-card hv-card--1">
+            <div class="hvc-label">Na trhu od roku</div>
+            <div class="hvc-num">2008</div>
+            <div class="hvc-sub">15+ let zkušeností</div>
+          </div>
+          <!-- Karta 2: Hodnocení -->
+          <div class="hv-card hv-card--2">
+            <div class="hvc-label">Google hodnocení</div>
+            <div class="hvc-stars">★★★★★</div>
+            <div class="hvc-rating">4.9 / 5</div>
+            <div class="hvc-sub" style="margin-top:0.5rem;">ověřené recenze</div>
+          </div>
+          <!-- Karta 3: Reakce -->
+          <div class="hv-card hv-card--3">
+            <div class="hvc-label">Reakce na poptávku</div>
+            <div class="hvc-num" style="color:var(--jade);">&lt; 24h</div>
+            <div style="margin-top:0.75rem;">
+              <span class="hvc-dot hvc-dot--jade"></span>
+              <span class="hvc-status">Dostupní Po–So</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
